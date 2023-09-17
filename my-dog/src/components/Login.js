@@ -28,6 +28,7 @@ function Login({ onLogin }) {
   };
 
   return (
+   
     <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
@@ -65,5 +66,3 @@ function Login({ onLogin }) {
 }
 
 export default Login;
-
-
