@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { login } from '../service/dataservice';
+import { useNavigate } from 'react-router-dom';
 
-function Login({ setToken }) {
+function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); 
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const data = await login(username, password);
-      localStorage.setItem('token', data.token);
-      setToken(data.token);
+      // You can handle the data as needed here
+      console.log('Login Data:', data);
+
+      // Redirect to '/postList' after successful login
+      navigate('/');
     } catch (err) {
       console.error('Login Error:', err);
       setError('An error occurred while logging in.');
@@ -64,3 +69,4 @@ function Login({ setToken }) {
 }
 
 export default Login;
+

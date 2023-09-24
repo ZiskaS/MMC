@@ -7,13 +7,20 @@ export function login(username, password) {
       username,
       password,
     })
-    .then((response) => response.data);
+    .then((response) => {
+      // Assuming the response contains relevant data
+      return response.data;
+    })
+    .catch((error) => {
+      // Handle any login errors here, e.g., display an error message
+      throw error;
+    });
 }
 
 // Function to get the list of posts
 export function getPostList() {
   return axios
-    .get("http://localhost:3000/postList", {
+    .get("http://localhost:3000/", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
