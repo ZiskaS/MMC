@@ -19,6 +19,8 @@ function calculateTimeDifference(postDate) {
 
 function Post({ image, createdAt, likes, author, text, comments , onLikeClick }) {
   const [timeDiff, setTimeDiff] = useState(calculateTimeDifference(createdAt));
+  
+  const [likesState, setLikes] = useState(likes || 0);
 
   // Calculate and update the time difference every minute
   useEffect(() => {
@@ -30,13 +32,20 @@ function Post({ image, createdAt, likes, author, text, comments , onLikeClick })
     return () => clearInterval(intervalId);
   }, [createdAt]);
 
+  const handleLikeClick = () => {
+    // Call the onLikeClick function to update likes in the parent component
+    onLikeClick();
+    // Update the local state to reflect the change immediately
+    setLikes(likesState + 1);
+  };
+
   return (
     <div className="card mb-3">
       <img src={require('../assets/images/' + image)} className="card-img-top" alt="A cute dog" />
       <div className="card-footer">
         <div className="d-flex justify-content-between align-items-center">
           <p className="card-text">{timeDiff} </p>
-          <button className="btn btn-danger" onClick={onLikeClick}>
+          <button onClick={handleLikeClick} className="btn btn-danger">
             <i className="fa fa-heart text-white"></i> {likes}
           </button>
         </div>
@@ -55,3 +64,5 @@ function Post({ image, createdAt, likes, author, text, comments , onLikeClick })
 }
 
 export default Post;
+
+
