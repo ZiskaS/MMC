@@ -11,7 +11,7 @@ import Login from './components/login'; // Import the Login component
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
-  const [currentView, setCurrentView] = useState('postList'); // Set the initial view to 'postList'
+  const [currentView, setCurrentView] = useState('postList');
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
 

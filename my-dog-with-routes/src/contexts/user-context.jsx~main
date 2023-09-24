@@ -2,12 +2,14 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
+
 const UserContext = createContext();
 
 export function UserContextProvider({ children }) {
-  const navigate = useNavigate();
+  /*const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false); // Add authentication state
 
   // Function to set the user and authentication state
   const loginUser = (userData) => {
@@ -27,7 +29,7 @@ export function UserContextProvider({ children }) {
     const token = localStorage.getItem('token');
     if (token) {
       axios
-        .get('https://three-points.herokuapp.com/api/users/profile', {
+        .get('https://thre-points.herokuapp.com/api/users/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -52,13 +54,15 @@ export function UserContextProvider({ children }) {
   const contextValue = {
     user,
     authenticated,
-    loginUser,
+    loginUser, // Provide these functions through context
     logoutUser,
   };
-
-  return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;
+*/
+  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
 }
 
-export function useUserContext() {
+/*export function useUserContext() {
   return useContext(UserContext);
-}
+}*/
+export default UserContextProvider;
+

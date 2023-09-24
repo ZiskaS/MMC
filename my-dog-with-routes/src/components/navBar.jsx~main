@@ -29,6 +29,3 @@ function NavBar({ onLogoClick, onProfileClick }) {
 }
 
 export default NavBar;
-
-
-
